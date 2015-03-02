@@ -2,69 +2,21 @@
 <html>
 	<head>
 		<title>Chat</title>
-		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 	</head>
 	<body>
-		<ul id="messages"></ul>
+		<div id="sidebar">
+			<ul id="users"></ul>
+		</div>
+		<div id="chat-window">
+			<ul id="messages"></ul>
+		</div>
 		<form action="">
 			<input id="m" autocomplete="off" />
 			<button type="button" id="submit">Send</button>
 		</form>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-		<script>
-		(function() {
-			var nickname = prompt('Enter a nickname', 'Guest'),
-				typing = false,		
-				socket = io();
-			
-			$('#submit').on('click', function() {	
-				if ($('#m').val()) {	
-					socket.emit('chat message', nickname, $('#m').val());
-					$('#messages').append($('<li>').text(nickname + ': ' + $('#m').val()));		
-					$('#m').val('');
-				}
-				return false;		
-			});
-			socket.on('chat message', function(name, msg) {
-				$('#' + name + '-typing').remove();	
-				$('#messages').append($('<li>').text(name + ': ' + msg));		
-			});
-			socket.on('user connected', function(msg) {
-				$('#messages').append($('<li>').text(msg));		
-			});
-			socket.on('user typing', function(data) {					
-				$('#messages').append($('<li id="' + data + '-typing" class="typing">').text(data+ ' is typing...'));		
-			});
-			socket.on('cease typing', function(data) {
-				$('#' + data).remove();	
-			});
-			socket.emit('set nickname', nickname);	
-
-			$(document).keypress(function(e) {
-							if (e.which == 13) {
-								e.preventDefault();
-								$('#submit').click();
-								typing = false;
-								$('#m').focus();
-							}	
-						})
-						.ready(function() {
-							$('#messages').append($('<li>').text(nickname + ' has joined the room'));
-							$('#m').focus()
-								   .on('keyup', function() {
-									   if ($(this).val().length) {
-										   if (typing === false) {	
-											   socket.emit('user typing', nickname);	
-										   }
-										   typing = true;
-									   } else {
-										   typing = false;
-										   socket.emit('cease typing', nickname + '-typing');
-									   }
-								   });
-						});
-		})();
-		</script>
+		<script src="/javascripts/script.js"></script>
 	</body>
 </html>

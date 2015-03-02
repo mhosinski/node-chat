@@ -12,7 +12,7 @@ app.get('/', function(req, res) {
 io.on('connection', function(socket) {
 	socket.on('set nickname', function(data) {
 		console.log(data + ' has connected');
-		socket.broadcast.emit('user connected', data + ' has joined the room');
+		socket.broadcast.emit('user connected', data);
 	});
 	socket.on('chat message', function(name, msg) {
 		socket.broadcast.emit('chat message', name, msg);	

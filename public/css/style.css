@@ -3,8 +3,12 @@
 	padding: 0; 
 	box-sizing: border-box; 
 }
+html {
+	height: 100%;
+}
 body { 
 	font: 13px Helvetica, Arial; 
+	height: 100%;
 }
 form { 
 	background: #000; 
@@ -25,12 +29,22 @@ form button {
 	padding: 10px;
 	float:right;
 }
-#messages { 
+#sidebar {
+	width: 15%;
+	height: 100%;
+	float: left;
+	background-color: #f5f5f5;
+	border-right: 1px #ddd solid;
+}
+#chat-window {
+	margin-left: 15%;
+}
+#messages, #users { 
 	list-style-type: none; 
 	margin: 0; 
 	padding: 0; 
 }
-#messages li { 
+#messages li, #users li { 
 	padding: 5px 10px; 
 }
 #messages li:nth-child(odd) { 
