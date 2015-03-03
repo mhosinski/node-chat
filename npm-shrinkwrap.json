@@ -1,5 +1,5 @@
 {
-  "name": "sockets",
+  "name": "node-chat",
   "version": "0.0.0",
   "dependencies": {
     "express": {
@@ -667,6 +667,10 @@
           }
         }
       }
+    },
+    "redis": {
+      "version": "0.12.1",
+      "from": "redis@"
     }
   }
 }
