@@ -13,12 +13,16 @@ app.get('/', function(req, res) {
 
 io.on('connection', function(socket) {
 	socket.on('set nickname', function(data) {
-		console.log(data + ' has connected');
+		console.log(socket.id + ': ' + data + ' has connected');
 		socket.broadcast.emit('user connected', data);
-		rclient.sadd('users', data);
+		rclient.hvals('users', function(err, data) {
+			socket.emit('userlist', data);
+			console.dir(data);
+		});
+		rclient.hset('users', socket.id, data);
 	});
 	socket.on('chat message', function(name, msg) {
-		socket.broadcast.emit('chat message', name, msg);	
+		socket.broadcast.emit('chat message', name, msg);
 	});
 	socket.on('user typing', function(data) {
 		socket.broadcast.emit('user typing', data);
@@ -26,7 +30,16 @@ io.on('connection', function(socket) {
 	socket.on('cease typing', function(data) {
 		socket.broadcast.emit('cease typing', data);
 	});
+	socket.on('disconnect', function() {
+		rclient.hget('users', socket.id, function(err, name) {
+			console.log(socket.id + ': ' + name + ' has disconnected');
+			socket.broadcast.emit('user disconnected', name);
+			rclient.hdel('users', socket.id);
+		});
+	});
 });
+
+
 
 rclient.on('connect', function() {
 	console.log('Connected to Redis');
