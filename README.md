@@ -2,7 +2,7 @@
 A simple chat application built with node.js, express, socket.io, and redis.
 
 ## Installation
-Install [node.js](http://nodejs.org/download/) and [npm](https://github.com/npm/npm).
+Install [node.js](http://nodejs.org/download/), [npm](https://github.com/npm/npm), and [redis](http://redis.io/topics/quickstart).
 
 Clone the repo and install dependencies:
 ```bash
@@ -12,6 +12,12 @@ $ npm install
 ```
 
 ## Run
+Start redis server:
+```bash
+$ redis-server
+```
+
+Start app:
 ```bash
 $ node app.js
 ```
