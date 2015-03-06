@@ -6,7 +6,7 @@ A simple chat application built with node.js, express, socket.io, and redis.
 * [npm](https://github.com/npm/npm)
 * [redis](http://redis.io/topics/quickstart)
 
-## Installation
+## Install
 Clone the repo and install dependencies:
 ```bash
 $ git clone https://github.com/mhosinski/node-chat.git
