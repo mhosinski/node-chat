@@ -39,6 +39,12 @@
 					addUserToList(data[i], true);
 				}
 		});
+		socket.on('messagelist', function(data) {
+				// TO DO: Should create a fragment instead of attaching elements one at a time.
+				for (var i = 0, j = data.length; i < j; i++) {
+					$('#messages').prepend($('<li>').text(data[i]));
+				}
+		});
     socket.emit('set nickname', nickname);
 
 
