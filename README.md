@@ -1,9 +1,12 @@
 # node-chat
 A simple chat application built with node.js, express, socket.io, and redis.
 
-## Installation
-Install [node.js](http://nodejs.org/download/), [npm](https://github.com/npm/npm), and [redis](http://redis.io/topics/quickstart).
+## Requirements
+* [node.js](http://nodejs.org/download/)
+* [npm](https://github.com/npm/npm)
+* [redis](http://redis.io/topics/quickstart)
 
+## Install
 Clone the repo and install dependencies:
 ```bash
 $ git clone https://github.com/mhosinski/node-chat.git
@@ -22,7 +25,7 @@ Start app:
 $ node app.js
 ```
 
-Open your browser and navigate to http://localhost:3000 to test. Open multiple tabs for additional users or access the app from other devices on your network by replacing 'localhost' with the ip address of the computer that is running the server.
+Navigate to [http://localhost:3000](http://localhost:3000) to test. Simulate additional users by opening the app in multiple tabs.
 
 ## License
 [MIT](https://github.com/mhosinski/node-chat/blob/master/LICENSE.md)
