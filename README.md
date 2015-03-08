@@ -23,3 +23,6 @@ $ node app.js
 ```
 
 Open your browser and navigate to http://localhost:3000 to test. Open multiple tabs for additional users or access the app from other devices on your network by replacing 'localhost' with the ip address of the computer that is running the server.
+
+## License
+[MIT](https://github.com/mhosinski/node-chat/blob/master/LICENSE.md)
